@@ -60,6 +60,64 @@ body{
     border-top-left-radius: 44px;
     margin-top: 94px;
 }
+.weekDays{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+    margin: 20px;
+    color: var(--secundary-color);
+    font-family: var(--secundary-font);
+    font-size: 14px;
+    font-style: italic;
+    
+   
+}
+.dayWeek{
+    background-color: var(--primary-color);
+    padding: 10px;
+    border-radius: 10px;
+    width: 55px;
+    transition: transfomr 0.3s ease;
+}
+.dayWeek:hover{
+    width: 65px;
+    transform: scale(1);
+   
+}
+.TaskList{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 25px;
+    color: white;
+}
+.TaskList h1{
+    font-family: var(--secundary-font);
+    font-size: 24px;
+    font-weight: bold;
+    font-style: italic;
+
+}
+.task{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    background-color: var(--primary-color);
+    color: var(--secundary-color);
+    padding: 10px;
+    border-radius: 10px;
+}
+.task p{
+    font-family: var(--secundary-font);
+    font-size: 14px;
+}
+.task h1{
+    font-family: var(--primary-font);
+    font-size: 18px;
+    font-weight: 400;
+}
 @media screen and (min-width: 1440px) {
     
     .header img{
@@ -96,6 +154,27 @@ body{
         height: 58px;
         font-size: 20px;
         font-style: italic;
-
+    }
+    .container-TaskList{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        text-align: center;
+        margin:0px 88px 88px 88px;
+        width: 90%;
+        height: 500px;
+        border-radius: 44px;
+       
+    }
+    .weekDays{  
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        margin: 50px;
+    }
+    .TaskList{
+       
+        
+       
     }
 }
