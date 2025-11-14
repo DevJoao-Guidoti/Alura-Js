@@ -33,6 +33,16 @@ body{
     margin: 40px 0 0 0;
     padding: 10px;
 }
+.empty-state{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin-top: 100px;
+    font-family: var(--primary-font);
+    color: var(--primary-color);
+    font-size: 32px;
+}
 .dayANDtask h1{
     font-family: var(--primary-font);
     font-size:36px;
@@ -52,6 +62,102 @@ body{
     width: 124px;
     height: 27px;
 }
+.modal-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 0%;
+    top: 0%;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(26, 27, 23, 0.9);
+    z-index: 1000;
+    display: none;
+}
+.modal-box.opened{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container-modal{ 
+    display: flex;
+    justify-content: center;
+    width: 390px;
+    height: 555px;
+    background-color: var(--primary-color);
+    border-radius: 44px;  
+}
+.modal{
+    background-color: var(--secundary-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+    width: 335px;
+    height: 450px;
+    border-radius: 44px;
+    gap: 10px;
+}
+.modal h1{
+    font-family: var(--primary-font);
+    color: var(--primary-color);
+    font-weight: 400;
+    margin: 20px;
+}
+.close-modal{
+    position: relative;
+    top: 20px;
+    right: 5px;
+    font-size: 24px;
+    color: var(--Secundary-color);
+    cursor: pointer;
+}
+.task-form{
+    color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 5px;
+}
+.form-group{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 10px;
+    
+}
+.form-group label{
+    color: #ffed00;
+    font-family: var(--secundary-font);
+    font-size: 16px;
+    font-weight: 400;
+    font-style: italic;
+}
+        input[type="text"],
+        input[type="time"],
+        textarea {
+            background: rgb(255, 231, 0, 0.5);
+            border: none;
+            border-radius: 20px;
+            padding: 15px 20px;
+            color: var(--secundary-color);
+            font-size: 14px;
+            font-family: var(--secundary-font);
+            outline: none;
+            transition: background 0.3s;
+        }
+
+
+.submit-btn{
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 44px;
+    margin-top: 10px;
+    font-family: var(--primary-font);
+    height: 35px;
+}
+
 
 .container-TaskList{
     width: 100%;
@@ -70,8 +176,6 @@ body{
     font-family: var(--secundary-font);
     font-size: 14px;
     font-style: italic;
-    
-   
 }
 .dayWeek{
     background-color: var(--primary-color);
@@ -83,7 +187,6 @@ body{
 .dayWeek:hover{
     width: 65px;
     transform: scale(1);
-   
 }
 .TaskList{
     display: flex;
@@ -93,11 +196,16 @@ body{
     color: white;
 }
 .TaskList h1{
+    color: var(--secundary-color);
     font-family: var(--secundary-font);
     font-size: 24px;
     font-weight: bold;
     font-style: italic;
-
+}
+.List ul {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
 }
 .task{
     display: flex;
@@ -156,13 +264,15 @@ body{
         font-style: italic;
     }
     .container-TaskList{
+        position: absolute;
+        top: 325px;
         display: flex;
         justify-content: space-evenly;
         align-items: center;
         text-align: center;
         margin:0px 88px 88px 88px;
         width: 90%;
-        height: 500px;
+        height: 425px;
         border-radius: 44px;
        
     }
@@ -170,11 +280,36 @@ body{
         display: flex;
         flex-direction: column;
         gap: 30px;
-        margin: 50px;
+       
     }
     .TaskList{
-       
+        width: 60%;
+        margin: 0px;
         
-       
+    }
+    .List ul{
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+    .container-modal{
+        width: 800px;
+        height: 650px;
+    }
+    .modal{
+        width: 700px;
+        height: 550px;
+    }
+    .modal h1{
+        font-size: 50px;
+    }
+    .task-form{
+        width: 400px;
+    }
+    .submit-btn{
+        margin-top: 40px;
+        height: 50px;
+        font-size: 
+        20px;
     }
 }
