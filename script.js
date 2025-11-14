@@ -9,13 +9,45 @@ const taskCountElement = document.querySelector(".dayANDtask p");
 const showmodal = () => modalBox.classList.add("opened");
 const closemodal = () => {
     modalBox.classList.remove("opened");
-    taskForm.reset(); // Limpa o formulário ao fechar
+    taskForm.reset();
 };
 
 // Função para atualizar a contagem de tarefas
 const updateTaskCount = () => {
     const taskCount = taskList.querySelectorAll("li:not(.empty-message)").length;
     taskCountElement.textContent = `${taskCount} task${taskCount !== 1 ? 's' : ''}`;
+};
+
+// Função para lidar com o checkbox
+const handleCheckboxChange = (checkbox) => {
+    const taskElement = checkbox.closest('.task');
+    const taskTitle = taskElement.querySelector('.task-title');
+    const taskDescription = taskElement.querySelector('.task-description');
+    const taskTime = taskElement.querySelector('.task-time');
+    
+    if (checkbox.checked) {
+        // Adiciona estilo de riscado
+        taskTitle.style.textDecoration = 'line-through';
+        taskTitle.style.textDecorationColor = '#FFE700';
+        taskTitle.style.textDecorationThickness = '2px';
+        
+        taskDescription.style.textDecoration = 'line-through';
+        taskDescription.style.textDecorationColor = '#FFE700';
+        taskDescription.style.textDecorationThickness = '2px';
+        
+        taskTime.style.textDecoration = 'line-through';
+        taskTime.style.textDecorationColor = '#FFE700';
+        taskTime.style.textDecorationThickness = '2px';
+        
+        // Adiciona opacidade para dar efeito visual
+        taskElement.style.opacity = '0.6';
+    } else {
+        // Remove estilo de riscado
+        taskTitle.style.textDecoration = 'none';
+        taskDescription.style.textDecoration = 'none';
+        taskTime.style.textDecoration = 'none';
+        taskElement.style.opacity = '1';
+    }
 };
 
 // Função para criar uma nova tarefa
@@ -34,9 +66,13 @@ const createTask = (title, description, time) => {
                 <h1 class="task-title">${title}</h1>
                 <p class="task-description">${description}</p>
             </div>
-            <input type="checkbox">
+            <input type="checkbox" class="task-checkbox">
         </div>
     `;
+    
+    // Adiciona event listener ao checkbox
+    const checkbox = li.querySelector('.task-checkbox');
+    checkbox.addEventListener('change', () => handleCheckboxChange(checkbox));
     
     taskList.appendChild(li);
     updateTaskCount();
@@ -77,8 +113,7 @@ const updateEmptyState = () => {
             emptyLi.className = "empty-message";
             emptyLi.innerHTML = `
                 <div class="empty-state">
-                    <p>You  have no commitments today.</p>
-                  
+                    <p>You have no commitments today.</p>
                 </div>
             `;
             taskList.appendChild(emptyLi);

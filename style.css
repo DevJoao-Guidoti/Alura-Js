@@ -12,12 +12,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    overflow-y:hidden;
 }
 body{
     background-color: var(--primary-color);
-
-    
+    overflow-y:hidden;
 }
 
 .header h1, .navBar{
@@ -161,10 +159,11 @@ body{
 
 .container-TaskList{
     width: 100%;
-    height: 100vh;
+    height: calc(100vh - 200px);
     background-color: var(--secundary-color);
     border-top-left-radius: 44px;
     margin-top: 94px;
+    overflow: hidden;
 }
 .weekDays{
     display: flex;
@@ -191,41 +190,126 @@ body{
 .TaskList{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     margin: 25px;
-    color: white;
+    color: var(--primary-color );
+    height: calc(100% - 120px);
+    overflow: hidden;
 }
 .TaskList h1{
-    color: var(--secundary-color);
+    color: var(---color);
     font-family: var(--secundary-font);
     font-size: 24px;
     font-weight: bold;
     font-style: italic;
+    margin-bottom: 15px;
 }
+.List {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 5px;
+}
+
+/* Estilo para o scroll no mobile - mais discreto */
+.List::-webkit-scrollbar {
+    width: 4px;
+}
+
+.List::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.List::-webkit-scrollbar-thumb {
+    background: rgba(255, 231, 0, 0.3);
+    border-radius: 10px;
+}
+
+.List::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 231, 0, 0.5);
+}
+
 .List ul {
     display: flex;
     flex-direction: column;
     gap: 25px;
+    padding-bottom: 90px;
 }
+/* Esconde o scroll no mobile */
+.List::-webkit-scrollbar {
+    display: none;
+}
+.List {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
 .task{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    text-align: center;
+    text-align: left;
     background-color: var(--primary-color);
     color: var(--secundary-color);
     padding: 10px;
     border-radius: 10px;
+    gap:10px;
 }
 .task p{
     font-family: var(--secundary-font);
     font-size: 14px;
+    font-style: italic;
+    margin: 0;
 }
 .task h1{
     font-family: var(--primary-font);
     font-size: 18px;
     font-weight: 400;
+    margin: 0;
 }
+.task-checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--secundary-color);
+    border-radius: 6px;
+    background-color: transparent;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.task-checkbox:hover {
+    border-color: var(--secundary-color);
+    transform: scale(1.05);
+}
+
+.task-checkbox:checked {
+    background-color: var(--secundary-color);
+    border-color: var(--secundary-color);
+}
+
+/* Marca de check quando marcado */
+.task-checkbox:checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--primary-color);
+    font-size: 16px;
+    font-weight: bold;
+}
+.task-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
 @media screen and (min-width: 1440px) {
     
     .header img{
@@ -274,23 +358,59 @@ body{
         width: 90%;
         height: 425px;
         border-radius: 44px;
-       
+        overflow: visible;
     }
     .weekDays{  
         display: flex;
         flex-direction: column;
         gap: 30px;
-       
     }
     .TaskList{
         width: 60%;
         margin: 0px;
-        
+        height: 100%;
+        padding: 20px 0;
     }
+    .task{
+        display: flex;
+        text-align: center;
+        gap: 0;
+    }
+    
+    .List {
+        height: calc(100% - 60px);
+        padding-right: 10px;
+        -ms-overflow-style:auto;
+    scrollbar-width:auto;
+    }
+    
+
+
+    /* Estilo do scroll no desktop - mais visível */
+    .List::-webkit-scrollbar {
+        display: block;
+        width: 8px;
+    }
+
+    .List::-webkit-scrollbar-track {
+        background: rgba(255, 231, 0, 0.1);
+        border-radius: 10px;
+    }
+
+    .List::-webkit-scrollbar-thumb {
+        background: var(--primary-color);
+        border-radius: 10px;
+    }
+
+    .List::-webkit-scrollbar-thumb:hover {
+        background: #ffed00;
+    }
+    
     .List ul{
         display: flex;
         flex-direction: column;
         gap: 25px;
+        padding-bottom: 30px;
     }
     .container-modal{
         width: 800px;
@@ -309,7 +429,6 @@ body{
     .submit-btn{
         margin-top: 40px;
         height: 50px;
-        font-size: 
-        20px;
+        font-size: 20px;
     }
 }
